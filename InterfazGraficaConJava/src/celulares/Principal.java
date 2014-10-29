@@ -101,7 +101,7 @@ public class Principal extends javax.swing.JFrame {
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 52, Short.MAX_VALUE)
+            .addGap(0, 76, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -120,9 +120,8 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -172,18 +171,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        txtsistema.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtsistemaActionPerformed(evt);
-            }
-        });
-        txtsistema.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtsistemaKeyTyped(evt);
-            }
-        });
-
-        gy1.setText("Sistea Operativo");
+        gy1.setText("Sistema Operativo");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -197,22 +185,22 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtlanzamiento, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
+                    .addComponent(txtlanzamiento, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
                     .addComponent(txtmarca)
                     .addComponent(txtmodelo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 5, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(gy1)
                             .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtoperadora, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtsistema, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(gy)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txtobservacion, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(48, 48, 48))
         );
@@ -339,10 +327,10 @@ public class Principal extends javax.swing.JFrame {
         String marc = txtmarca.getText();
         String mod = txtmodelo.getText();
         String lanz = txtlanzamiento.getText();
-        String sisop= txtsistema.getText();
+        String sisop = txtsistema.getText();
         String oper = txtoperadora.getText();
-        String obser= txtobservacion.getText();
-        
+        String obser = txtobservacion.getText();
+
         p.NuevoCelular(marc, mod, lanz, sisop, oper, obser);
         updateTabla();
     }//GEN-LAST:event_cmdRegistroActionPerformed
@@ -357,9 +345,9 @@ public class Principal extends javax.swing.JFrame {
             txtmarca.setText(String.valueOf(tabla.getValueAt(fila, 1)));
             txtmodelo.setText(String.valueOf(tabla.getValueAt(fila, 2)));
             txtlanzamiento.setText(String.valueOf(tabla.getValueAt(fila, 3)));
-            txtoperadora.setText(String.valueOf(tabla.getValueAt(fila, 4)));
-            txtobservacion.setText(String.valueOf(tabla.getValueAt(fila, 5)));
-            txtsistema.setText(String.valueOf(tabla.getValueAt(fila, 6)));
+            txtsistema.setText(String.valueOf(tabla.getValueAt(fila, 4)));
+            txtoperadora.setText(String.valueOf(tabla.getValueAt(fila, 5)));
+            txtobservacion.setText(String.valueOf(tabla.getValueAt(fila, 6)));
         }
     }//GEN-LAST:event_tablaMouseClicked
 
@@ -378,11 +366,11 @@ public class Principal extends javax.swing.JFrame {
             String marca = txtmarca.getText();
             String mod = txtmodelo.getText();
             String lanz = txtlanzamiento.getText();
-            String oper = txtoperadora.getText();
             String sist = txtsistema.getText();
-            String obser=txtobservacion.getText();
-            
-            if (p.updatePersona(id, marca, mod, lanz, oper, sist,obser)) {
+            String oper = txtoperadora.getText();
+            String obser = txtobservacion.getText();
+
+            if (p.updateCelular(id, marca, mod, lanz, sist, oper,obser)) {
 
                 updateTabla();
                 JOptionPane.showMessageDialog(this, "Datos actualizados correctamente");
@@ -390,7 +378,7 @@ public class Principal extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "No se pudo actualizar", "ERROR", JOptionPane.ERROR_MESSAGE);
             }
         } else {
-            JOptionPane.showMessageDialog(this, "Debe seleccionr una fila para actualizar");
+            JOptionPane.showMessageDialog(this, "Debe seleccionar una fila para actualizar");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -424,39 +412,27 @@ public class Principal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_txtmarcaActionPerformed
 
-    private void txtsistemaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtsistemaKeyTyped
-        soloNumeros(evt);
-         String ncel= txtsistema.getText();
-        if (ncel.length()>9) {
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtsistemaKeyTyped
-
     private void txtmarcaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtmarcaKeyTyped
-        validaNombres(evt);
+
     }//GEN-LAST:event_txtmarcaKeyTyped
 
     private void txtobservacionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtobservacionKeyTyped
-        soloNumeros(evt);
+
     }//GEN-LAST:event_txtobservacionKeyTyped
 
     private void txtmodeloKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtmodeloKeyTyped
-        validaNombres(evt);
+
     }//GEN-LAST:event_txtmodeloKeyTyped
 
     private void txtlanzamientoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtlanzamientoKeyTyped
-        validaNombres(evt);
+        soloNumeros(evt);
     }//GEN-LAST:event_txtlanzamientoKeyTyped
 
     private void txtoperadoraKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtoperadoraKeyReleased
-        txtoperadora.setText(txtoperadora.getText().toLowerCase());
+        validaOperadora(evt);
     }//GEN-LAST:event_txtoperadoraKeyReleased
 
-    private void txtsistemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtsistemaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtsistemaActionPerformed
-
-    public void validaNombres(KeyEvent e) {
+    public void validaOperadora(KeyEvent e) {
         char c = e.getKeyChar();
         c = (c + "").toLowerCase().charAt(0);
         System.out.println(c);
@@ -480,7 +456,7 @@ public class Principal extends javax.swing.JFrame {
         // se colocan los datos en la tabla
         DefaultTableModel datos = new DefaultTableModel(dtPer, columNames) {
             boolean[] canEdit = new boolean[]{
-                false, false, false, false, false, false, false,false
+                false, false, false, false, false, false, false, false
             };
 
             @Override
@@ -500,7 +476,9 @@ public class Principal extends javax.swing.JFrame {
         txtmarca.setText("");
         txtmodelo.setText("");
         txtlanzamiento.setText("");
-        txtoperadora.setText("tu_correo@gmail.com");
+        txtsistema.setText("");
+        txtoperadora.setText("");
+        txtobservacion.setText("");
     }
 
     /**

@@ -14,7 +14,7 @@ public class Celulares {
     public boolean NuevoCelular(String marca, String modelo, String anioLanzamiento, String sistemaOperativo, String operadora, String observacion) {
         try {
             PreparedStatement pstm = con.getConnection().prepareStatement("insert into "
-                    + "persona(marca, modelo, anioLanzamiento, sistemaOperativo, operadora, observacion) "
+                    + "celular(marca, modelo, anioLanzamiento, sistemaOperativo, operadora, observacion) "
                     + " values(?,?,?,?,?,?)");
             pstm.setString(1, marca);
             pstm.setString(2, modelo);
@@ -30,15 +30,15 @@ public class Celulares {
         }
     }
 
-    public boolean updatePersona(int id, String marca, String modelo, String anioLanzamiento, String sistemaOperativo,String operadora,String observacion) {
+    public boolean updateCelular(int id, String marca, String modelo, String anioLanzamiento, String sistemaOperativo,String operadora,String observacion) {
         try {
-            PreparedStatement pstm = con.getConnection().prepareStatement("update persona "
-                    + "set nombres = ? ,"
-                    + "appPaterno = ? ,"
-                    + "appMaterno = ? ,"
-                    + "mail = ? ,"
-                    + "edad = ? ,"
-                    + "celular= ? " 
+            PreparedStatement pstm = con.getConnection().prepareStatement("update celular "
+                    + "set marca = ? ,"
+                    + "modelo = ? ,"
+                    + "anioLanzamiento = ? ,"
+                    + "sistemaOperativo = ? ,"
+                    + "operadora = ? ,"
+                    + "observacion= ? " 
                     + "where id = ? ");
             pstm.setString(1, marca);
             pstm.setString(2, modelo);
@@ -58,7 +58,7 @@ public class Celulares {
 
     public boolean deleteCelular(String cod) {
         try {
-            PreparedStatement pstm = con.getConnection().prepareStatement("delete from persona where id = ?");
+            PreparedStatement pstm = con.getConnection().prepareStatement("delete from celular where id = ?");
             pstm.setString(1, cod);
             pstm.execute();
             pstm.close();
@@ -93,19 +93,19 @@ public class Celulares {
             int i = 0;
             while (res.next()) {
                 String estCodigo = res.getString("id");
-                String estNombre = res.getString("marca");
-                String estpaterno = res.getString("modelo");
-                String estmaterno = res.getString("anioLanzamiento");
-                String estmail = res.getString("sistemaOperativo");
-                String edad = res.getString("operadora");
-                String observacion = res.getString("observacion");
+                String estMarca = res.getString("marca");
+                String estModelo = res.getString("modelo");
+                String estAnioLanzamiento = res.getString("anioLanzamiento");
+                String estSistemaOperativo = res.getString("sistemaOperativo");
+                String estOperadora = res.getString("operadora");
+                String estObservacion = res.getString("observacion");
                 celulares[i][0] = estCodigo;
-                celulares[i][1] = estNombre;
-                celulares[i][2] = estpaterno;
-                celulares[i][3] = estmaterno;
-                celulares[i][4] = estmail;
-                celulares[i][5] = edad;
-                celulares[i][6] = observacion;
+                celulares[i][1] = estMarca;
+                celulares[i][2] = estModelo;
+                celulares[i][3] = estAnioLanzamiento;
+                celulares[i][4] = estSistemaOperativo;
+                celulares[i][5] = estOperadora;
+                celulares[i][6] = estObservacion;
                 i++;
             }
             res.close();
